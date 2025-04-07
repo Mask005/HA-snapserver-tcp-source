@@ -68,6 +68,15 @@ if bashio::config.true 'server.enable_stream_librespot' ; then
     echo "source = librespot:///usr/bin/librespot?name=$(getval 'librespot_name')&devicename=$(getval 'librespot_device_name')&bitrate=$(getval 'librespot_bitrate')&volume=$(getval 'librespot_initial_volume')&normalize=$(getval 'librespot_normalize')&disable_audio_cache=$(getval 'librespot_disable_audio_cache')${extra_params}${params}" >> "$config_file"
 fi
 
+# TCP stream
+if bashio::config.true 'server.enable_stream_tcp' ; then
+    tcp_host=$(getval 'tcp_host')
+    tcp_port=$(getval 'tcp_port')
+    tcp_name=$(getval 'tcp_name')
+
+    echo "source = tcp://${tcp_host}:${tcp_port}?name=${tcp_name}" >> "$config_file"
+fi
+
 # Radio (or MPD) stream
 if bashio::config.true 'server.enable_mpd' ; then
     echo "source = pipe:///tmp/snapfifo?name=Radio" >> "$config_file"

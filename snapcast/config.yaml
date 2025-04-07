@@ -25,6 +25,10 @@ options:
     enable_web: true
     enable_mpd: true
     enable_stream_librespot: true
+    enable_stream_tcp: true  # Activer la source TCP
+    tcp_host: "127.0.0.1"    # Adresse IP du serveur TCP
+    tcp_port: 12345          # Port du serveur TCP
+    tcp_name: "TCP Stream"   # Nom de la source TCP
     librespot_name: Spotify
     librespot_device_name: Snapcast
     librespot_initial_volume: 100
@@ -49,6 +53,10 @@ schema:
     enable_web: bool
     enable_mpd: bool
     enable_stream_librespot: bool
+    enable_stream_tcp: bool  # Schéma pour activer la source TCP
+    tcp_host: str?           # Adresse IP du serveur TCP
+    tcp_port: port?          # Port du serveur TCP
+    tcp_name: str?           # Nom de la source TCP
     librespot_name: str?
     librespot_device_name: str?
     librespot_initial_volume: int(0,100)?
